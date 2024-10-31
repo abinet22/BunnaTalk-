@@ -1,0 +1,59 @@
+/* static/css/toast.css */
+:root {
+    --toast-background: rgba(51, 51, 51, 0.9); /* Dark background with transparency */
+    --toast-success-background: var(--success); /* Use defined success color */
+    --toast-error-background: #dc3545; /* Red for error */
+}
+
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    background-color: var(--toast-background);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    opacity: 0.9;
+    transition: opacity 0.5s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Slight shadow for better visibility */
+    animation: slideIn 0.5s forwards; /* Animation for showing the toast */
+}
+
+/* Success and error specific styles */
+.toast.success {
+    background-color: var(--toast-success-background); /* Green */
+}
+
+.toast.error {
+    background-color: var(--toast-error-background); /* Red */
+}
+
+/* Fade-out class */
+.fade-out {
+    opacity: 0; /* Reduce opacity to 0 for fade-out */
+    transition: opacity 0.5s ease-in-out; /* Smooth transition for fading out */
+}
+
+/* Keyframes for animations */
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}

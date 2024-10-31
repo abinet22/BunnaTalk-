@@ -1,0 +1,113 @@
+
+  {% extends './dashboard_base.html' %}
+{% block title %}Dashboard - BunaTalk{% endblock %}
+{% block content %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mycourses.css') }}">
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/mycourses.js') }}"></script>
+{% endblock %}
+<div class="course-modules">
+    <div class="course-section">
+      <h2 class="course-title">Amharic Language Course</h2>
+      <p class="course-description">Master the Ethiopian language with our comprehensive modules</p>
+      
+      <div class="modules-grid">
+        <div class="module-card">
+          <div class="module-info">
+            <h3>Basic Greetings</h3>
+            <p>Learn essential greetings and introductions</p>
+            <div class="module-type">
+              <span>✨ Free Module</span>
+            </div>
+          </div>
+          <div class="module-actions">
+            <div class="module-status status-completed">Completed</div>
+            <button class="play-button" onclick="startModule('basic-greetings')">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+        </div>
+  
+        <div class="module-card">
+          <div class="module-info">
+            <h3>Numbers & Counting</h3>
+            <p>Master numbers and basic counting</p>
+            <div class="module-type">
+              <span>✨ Free Module</span>
+            </div>
+          </div>
+          <div class="module-actions">
+            <div class="module-status status-in-progress">In Progress</div>
+            <button class="play-button" onclick="startModule('numbers-counting')">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+        </div>
+  
+        <div class="module-card">
+          <div class="module-info">
+            <h3>Advanced Conversation</h3>
+            <p>Complex dialogue and cultural context</p>
+            <div class="module-type">
+              <span class="premium-badge">👑 Premium</span>
+            </div>
+          </div>
+          <div class="module-actions">
+            <div class="module-status status-not-started">Not Started</div>
+            <button class="play-button" onclick="showPaymentModal()">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="course-section">
+      <h2 class="course-title">Tigrinya Language Course</h2>
+      <p class="course-description">Learn Tigrinya with our structured learning path</p>
+      
+      <div class="modules-grid">
+        <div class="module-card">
+          <div class="module-info">
+            <h3>Basic Phrases</h3>
+            <p>Essential Tigrinya expressions</p>
+            <div class="module-type">
+              <span>✨ Free Module</span>
+            </div>
+          </div>
+          <div class="module-actions">
+            <div class="module-status status-not-started">Not Started</div>
+            <button class="play-button" onclick="startModule('tigrinya-basics')">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="paymentModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+      <h2>Upgrade to Premium</h2>
+      <p>Get access to all premium modules and features</p>
+      <p>Only $9.99/month</p>
+      <button class="premium-button" onclick="upgradeToPremium()">Upgrade Now</button>
+    </div>
+  </div>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+          <div id="toast-container">
+              {% for category, message in messages %}
+                  <div class="toast {{ category }}">{{ message }}</div>
+              {% endfor %}
+          </div>
+      {% endif %}
+  {% endwith %}
+  
+  
+  {% endblock %}

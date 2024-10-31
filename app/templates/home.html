@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Home - BunaTalk{% endblock %}
+{% block content %}
+    <section class="hero">
+      <h1>Learn Ethiopian Languages</h1>
+      <p>Discover the rich linguistic heritage of Ethiopia through interactive lessons, native audio, and a supportive community</p>
+      <a href="/register" class="cta-button">Start Learning Now</a>
+    </section>
+    
+    <section class="features">
+      <h2>Why Choose EthioLingo?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <svg class="floating-element" viewBox="0 0 24 24" fill="var(--primary)">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          <h3>Interactive Lessons</h3>
+          <p>Learn through engaging activities and real-world scenarios</p>
+        </div>
+        <div class="feature-card">
+          <svg class="floating-element" viewBox="0 0 24 24" fill="var(--primary)">
+            <path d="M12 14c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 8c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+          <h3>Native Speakers</h3>
+          <p>Learn from authentic pronunciations and cultural insights</p>
+        </div>
+        <div class="feature-card">
+          <svg class="floating-element" viewBox="0 0 24 24" fill="var(--primary)">
+            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+          </svg>
+          <h3>Track Progress</h3>
+          <p>Monitor your learning journey with detailed analytics</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="languages">
+      <h2>Available Languages</h2>
+      <div class="language-grid">
+        <div class="language-card">
+          <h3>Amharic</h3>
+          <p>The official language of Ethiopia</p>
+          <div class="progress-indicator">
+            <div class="progress-bar"></div>
+          </div>
+        </div>
+        <div class="language-card">
+          <h3>Afaan Oromo</h3>
+          <p>The most widely spoken language in Ethiopia</p>
+          <div class="progress-indicator">
+            <div class="progress-bar"></div>
+          </div>
+        </div>
+        <div class="language-card">
+          <h3>Tigrinya</h3>
+          <p>The primary language of Tigray</p>
+          <div class="progress-indicator">
+            <div class="progress-bar"></div>
+          </div>
+        </div>
+        <div class="language-card">
+          <h3>Somali</h3>
+          <p>Spoken in the Somali Region</p>
+          <div class="progress-indicator">
+            <div class="progress-bar"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endblock %}
+  
+    

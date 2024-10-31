@@ -1,0 +1,35 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/toast.css') }}">
+
+    <title>{% block title %}BunaTalk{% endblock %}</title>
+</head>
+<body>
+    {% include 'partials/header.html' %}  <!-- Render header partial -->
+    
+    <div class="content">
+        {% block content %}{% endblock %}  <!-- Main content block -->
+    </div>
+
+    <!-- Toast Container -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div id="toast-container">
+            {% for category, message in messages %}
+                <div class="toast {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+    {% include 'partials/footer.html' %}  <!-- Render footer partial -->
+    
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/toast.js') }}"></script> <!-- Add this line -->
+</body>
+</html>

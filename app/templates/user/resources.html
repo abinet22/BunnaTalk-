@@ -1,0 +1,333 @@
+<html><head><base href="." />
+    <title>EthioLingo - Resources</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    :root {
+      --primary: #2D5D7C;
+      --accent: #E6B43C;
+      --background: #F5F5F5;
+      --text: #333333;
+      --success: #4CAF50;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--background);
+      color: var(--text);
+    }
+    
+    .resources-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+    
+    .search-section {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .search-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .search-header h1 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .search-filters {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .filter-select {
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      flex: 1;
+      min-width: 150px;
+    }
+    
+    .search-bar {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    
+    .resource-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    
+    .resource-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .resource-image {
+      height: 160px;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    
+    .resource-content {
+      padding: 1.5rem;
+    }
+    
+    .resource-type {
+      font-size: 0.875rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    
+    .resource-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    .resource-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.875rem;
+      color: #666;
+    }
+    
+    .resource-price {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .price-tag {
+      background: var(--accent);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+    }
+    
+    .price-tag.free {
+      background: var(--success);
+    }
+    
+    @media (max-width: 768px) {
+      .resources-container {
+        padding: 1rem;
+      }
+      
+      .search-filters {
+        flex-direction: column;
+      }
+      
+      .filter-select {
+        width: 100%;
+      }
+    }
+    </style>
+    </head>
+    <body>
+    
+    <nav class="nav-bar">
+      <div class="nav-container">
+        <a href="https://ethiolingo.com" class="nav-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--primary)">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          EthioLingo
+        </a>
+        <div class="nav-links">
+          <a href="https://ethiolingo.com/dashboard" class="nav-link">Dashboard</a>
+          <a href="https://ethiolingo.com/courses" class="nav-link">My Courses</a>
+          <a href="https://ethiolingo.com/community" class="nav-link">Community</a>
+          <a href="https://ethiolingo.com/resources" class="nav-link">Resources</a>
+          <div class="profile-icon">👤</div>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="resources-container">
+      <section class="search-section">
+        <div class="search-header">
+          <h1>Learning Resources</h1>
+          <p>Discover a wealth of Ethiopian language learning materials</p>
+        </div>
+        
+        <div class="search-filters">
+          <select class="filter-select">
+            <option value="">All Languages</option>
+            <option value="amharic">Amharic</option>
+            <option value="tigrinya">Tigrinya</option>
+            <option value="oromo">Oromo</option>
+          </select>
+          
+          <select class="filter-select">
+            <option value="">Resource Type</option>
+            <option value="books">Books</option>
+            <option value="audio">Audio Lessons</option>
+            <option value="video">Video Content</option>
+            <option value="worksheets">Worksheets</option>
+          </select>
+          
+          <select class="filter-select">
+            <option value="">Price Range</option>
+            <option value="free">Free</option>
+            <option value="paid">Paid</option>
+          </select>
+          
+          <select class="filter-select">
+            <option value="">Difficulty Level</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+        
+        <input type="search" class="search-bar" placeholder="Search resources...">
+      </section>
+      
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-image">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="white">
+              <path d="M21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 15H3V6h18v13z"/>
+              <path d="M21 8H3v2h18V8z"/>
+            </svg>
+          </div>
+          <div class="resource-content">
+            <div class="resource-type">E-Book</div>
+            <h3 class="resource-title">Amharic for Beginners</h3>
+            <div class="resource-info">
+              <span>By Sarah Johnson</span>
+              <div class="resource-price">
+                <span class="price-tag">$19.99</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-image">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="white">
+              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+            </svg>
+          </div>
+          <div class="resource-content">
+            <div class="resource-type">Audio Course</div>
+            <h3 class="resource-title">Tigrinya Pronunciation Guide</h3>
+            <div class="resource-info">
+              <span>30 Lessons</span>
+              <div class="resource-price">
+                <span class="price-tag free">Free</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-image">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="white">
+              <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
+            </svg>
+          </div>
+          <div class="resource-content">
+            <div class="resource-type">Video Series</div>
+            <h3 class="resource-title">Oromo Cultural Insights</h3>
+            <div class="resource-info">
+              <span>12 Episodes</span>
+              <div class="resource-price">
+                <span class="price-tag">$29.99</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-image">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="white">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+            </svg>
+          </div>
+          <div class="resource-content">
+            <div class="resource-type">Worksheets</div>
+            <h3 class="resource-title">Amharic Writing Practice</h3>
+            <div class="resource-info">
+              <span>50 Pages</span>
+              <div class="resource-price">
+                <span class="price-tag free">Free</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="https://ethiolingo.com/courses">Courses</a></li>
+            <li><a href="https://ethiolingo.com/resources">Resources</a></li>
+            <li><a href="https://ethiolingo.com/practice">Practice</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Community</h4>
+          <ul class="footer-links">
+            <li><a href="https://ethiolingo.com/forum">Forum</a></li>
+            <li><a href="https://ethiolingo.com/events">Events</a></li>
+            <li><a href="https://ethiolingo.com/blog">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="https://ethiolingo.com/help">Help Center</a></li>
+            <li><a href="https://ethiolingo.com/contact">Contact Us</a></li>
+            <li><a href="https://ethiolingo.com/feedback">Feedback</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="https://ethiolingo.com/privacy">Privacy Policy</a></li>
+            <li><a href="https://ethiolingo.com/terms">Terms of Use</a></li>
+            <li><a href="https://ethiolingo.com/cookies">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 EthioLingo. All rights reserved.</p>
+      </div>
+    </footer>
+    
+    </body></html>

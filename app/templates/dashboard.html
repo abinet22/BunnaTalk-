@@ -1,0 +1,96 @@
+{% extends 'dashboard_base.html' %}
+{% block title %}Dashboard - BunaTalk{% endblock %}
+{% block content %}
+  
+    <div class="welcome-section">
+      <div>
+        <h1>Welcome back, Sarah! 👋</h1>
+        <p>Continue your language learning journey</p>
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <button style="background: var(--primary); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer;">Resume Learning</button>
+        <button style="background: var(--accent); border: none; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer;">Practice</button>
+      </div>
+    </div>
+  
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Daily Streak</h3>
+        <div style="font-size: 2rem; color: var(--primary); margin-top: 0.5rem;">🔥 15 days</div>
+      </div>
+      <div class="stat-card">
+        <h3>XP Points</h3>
+        <div style="font-size: 2rem; color: var(--primary); margin-top: 0.5rem;">⭐ 2,450</div>
+      </div>
+      <div class="stat-card">
+        <h3>Time Spent</h3>
+        <div style="font-size: 2rem; color: var(--primary); margin-top: 0.5rem;">⏱️ 45h</div>
+      </div>
+    </div>
+  
+    <h2>Your Courses</h2>
+    <div class="courses-section">
+      <div class="course-card">
+        <div class="language-icon">🇪🇹</div>
+        <h3>Amharic</h3>
+        <p>Intermediate Level</p>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 75%"></div>
+        </div>
+        <p style="margin-top: 0.5rem">75% Complete</p>
+      </div>
+      <div class="course-card">
+        <div class="language-icon">🗣️</div>
+        <h3>Afaan Oromo</h3>
+        <p>Beginner Level</p>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 30%"></div>
+        </div>
+        <p style="margin-top: 0.5rem">30% Complete</p>
+      </div>
+      <div class="course-card">
+        <div class="language-icon">📚</div>
+        <h3>Tigrinya</h3>
+        <p>Beginner Level</p>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 15%"></div>
+        </div>
+        <p style="margin-top: 0.5rem">15% Complete</p>
+      </div>
+    </div>
+  
+    <div class="achievements-section">
+      <h2>Recent Achievements</h2>
+      <div class="badges-grid">
+        <div class="badge">
+          <div class="badge-icon">🏆</div>
+          <p>First Lesson</p>
+        </div>
+        <div class="badge">
+          <div class="badge-icon">💫</div>
+          <p>Perfect Score</p>
+        </div>
+        <div class="badge">
+          <div class="badge-icon">🎯</div>
+          <p>10 Day Streak</p>
+        </div>
+        <div class="badge">
+          <div class="badge-icon">🌟</div>
+          <p>Grammar Pro</p>
+        </div>
+      </div>
+    </div>
+  
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+          <div id="toast-container">
+              {% for category, message in messages %}
+                  <div class="toast {{ category }}">{{ message }}</div>
+              {% endfor %}
+          </div>
+      {% endif %}
+  {% endwith %}
+  
+  
+  {% endblock %}

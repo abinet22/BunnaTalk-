@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Login - BunaTalk{% endblock %}
+{% block content %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h2>Login</h2>
+            <p>Enter your credentials to access your account</p>
+        </div>
+        <form method="POST" action="{{ url_for('main.login') }}">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="auth-button">Login</button>
+        </form>
+     
+    </div>
+</div>
+{% endblock %}

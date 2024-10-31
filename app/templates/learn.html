@@ -1,0 +1,371 @@
+<html><head><base href="." />
+    <title>EthioLingo - Learning</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    :root {
+      --primary: #2D5D7C;
+      --accent: #E6B43C;
+      --background: #F5F5F5;
+      --text: #333333;
+      --success: #4CAF50;
+      --sidebar-width: 250px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--background);
+      color: var(--text);
+    }
+    
+    .learning-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .course-header {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .course-progress-circle {
+      width: 120px;
+      height: 120px;
+      position: relative;
+    }
+    
+    .progress-ring {
+      transform: rotate(-90deg);
+    }
+    
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .learning-card {
+      background: white;
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    
+    .learning-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .learning-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lesson-list {
+      list-style: none;
+      margin-top: 2rem;
+    }
+    
+    .lesson-item {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .lesson-item:hover {
+      background: rgba(45, 93, 124, 0.1);
+    }
+    
+    .status-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid var(--success);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .completed .status-circle {
+      background: var(--success);
+      color: white;
+    }
+    
+    .chat-widget {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    .chat-widget:hover {
+      transform: scale(1.1);
+    }
+    
+    @media (max-width: 768px) {
+      .learning-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .course-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+    }
+    
+    .nav-bar {
+      background: white;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary);
+    }
+    
+    .profile-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    
+    .mobile-menu {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    
+      .mobile-menu {
+        display: block;
+      }
+    
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+    }
+    </style>
+    </head>
+    <body>
+    
+    <nav class="nav-bar">
+      <div class="nav-container">
+        <a href="https://ethiolingo.com" class="nav-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--primary)">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          EthioLingo
+        </a>
+        <div class="nav-links">
+          <a href="https://ethiolingo.com/dashboard" class="nav-link">Dashboard</a>
+          <a href="https://ethiolingo.com/courses" class="nav-link">My Courses</a>
+          <a href="https://ethiolingo.com/community" class="nav-link">Community</a>
+          <a href="https://ethiolingo.com/resources" class="nav-link">Resources</a>
+          <div class="profile-icon">👤</div>
+        </div>
+        <div class="mobile-menu">☰</div>
+      </div>
+    </nav>
+    
+    <div class="learning-container">
+      <div class="course-header">
+        <div>
+          <h1>Amharic - Intermediate</h1>
+          <p>Master complex sentences and advanced vocabulary</p>
+        </div>
+        <svg class="progress-ring" width="120" height="120">
+          <circle cx="60" cy="60" r="54" stroke="#eee" stroke-width="8" fill="none"/>
+          <circle cx="60" cy="60" r="54" stroke="var(--success)" stroke-width="8" fill="none" stroke-dasharray="339.292" stroke-dashoffset="118.752"/>
+        </svg>
+      </div>
+    
+      <div class="learning-grid">
+        <div class="learning-card">
+          <div class="learning-card-header">
+            <div class="icon-circle">📚</div>
+            <h3>Current Lesson</h3>
+          </div>
+          <p>Lesson 8: Complex Sentences</p>
+          <button onclick="window.location.href='/user/lessons';" style="background: var(--primary); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; margin-top: 1rem; cursor: pointer;">Continue Learning</button>
+        </div>
+    
+        <div class="learning-card">
+          <div class="learning-card-header">
+            <div class="icon-circle">🏆</div>
+            <h3>Achievements</h3>
+          </div>
+          <p>5 badges earned this week</p>
+          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+            <span style="font-size: 2rem;">🥇</span>
+            <span style="font-size: 2rem;">🎯</span>
+            <span style="font-size: 2rem;">⭐</span>
+          </div>
+        </div>
+    
+        <div class="learning-card">
+          <div class="learning-card-header">
+            <div class="icon-circle">🎮</div>
+            <h3>Practice Games</h3>
+          </div>
+          <p>Reinforce your learning with fun activities</p>
+          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+            <button style="flex: 1; background: var(--accent); border: none; padding: 0.8rem; border-radius: 8px; cursor: pointer;">Flashcards</button>
+            <button style="flex: 1; background: var(--accent); border: none; padding: 0.8rem; border-radius: 8px; cursor: pointer;">Quiz</button>
+          </div>
+        </div>
+      </div>
+    
+      <h2>Lesson Progress</h2>
+      <ul class="lesson-list">
+        <li class="lesson-item completed">
+          <div class="status-circle">✓</div>
+          <div>
+            <h4>Lesson 7: Past Perfect Tense</h4>
+            <p>Completed on June 15</p>
+          </div>
+        </li>
+        <li class="lesson-item">
+          <div class="status-circle"></div>
+          <div>
+            <h4>Lesson 8: Complex Sentences</h4>
+            <p>In Progress - 65% Complete</p>
+          </div>
+        </li>
+        <li class="lesson-item">
+          <div class="status-circle"></div>
+          <div>
+            <h4>Lesson 9: Advanced Vocabulary</h4>
+            <p>Locked - Complete previous lesson to unlock</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="chat-widget">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+    </div>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const learningCards = document.querySelectorAll('.learning-card');
+      
+      learningCards.forEach(card => {
+        card.addEventListener('click', () => {
+          card.style.transform = 'scale(0.98)';
+          setTimeout(() => {
+            card.style.transform = '';
+          }, 100);
+        });
+      });
+    
+      const chatWidget = document.querySelector('.chat-widget');
+      chatWidget.addEventListener('click', () => {
+        alert('Chat feature coming soon!');
+      });
+    
+      const mobileMenu = document.querySelector('.mobile-menu');
+      const navLinks = document.querySelector('.nav-links');
+    
+      mobileMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+    });
+    </script>
+    
+    </body></html>

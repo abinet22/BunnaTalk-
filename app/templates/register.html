@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Home - BunaTalk{% endblock %}
+{% block content %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+{% endblock %}
+    
+    <div class="auth-container">
+   
+      
+      <div class="auth-card">
+        <div class="auth-header">
+          <h2>Register</h2>
+          <p>Create your account to start learning</p>
+        </div>
+        
+        <form id="register-form" novalidate>
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required>
+            <span class="error-message">Name is required</span>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+            <span class="error-message">Please enter a valid email address</span>
+          </div>
+          <div class="form-group">
+            <label for="username">User Name</label>
+            <input type="text" id="username" required>
+            <span class="error-message">User Name is required</span>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+            <span class="error-message">Password must be at least 8 characters</span>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirmpassword">Confirm Password</label>
+            <input type="password" id="confirmpassword" required>
+            <span class="error-message">Passwords do not match</span>
+          </div>
+          
+          <button type="submit" class="auth-button">Create Account</button>
+        </form>
+      </div>
+    </div>
+    
+    {% endblock %}

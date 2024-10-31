@@ -1,0 +1,171 @@
+.course-modules {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+  }
+  
+  .course-section {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .course-header {
+    margin-bottom: 1rem;
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+  
+  .course-title {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .course-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .modules-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .module-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .module-info {
+    flex: 1;
+  }
+  
+  .module-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .module-info p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+  }
+  
+  .module-type {
+    font-size: 0.8rem;
+  }
+  
+  .module-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+  }
+  
+  .status-completed {
+    background: var(--success);
+    color: white;
+  }
+  
+  .status-in-progress {
+    background: var(--accent);
+    color: black;
+  }
+  
+  .status-not-started {
+    background: #eee;
+    color: var(--text);
+  }
+  
+  .module-actions {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+  }
+  
+  .play-button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  
+  .play-button:hover {
+    transform: scale(1.1);
+    background-color: #1f4560;
+  }
+  
+  .play-button svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  #paymentModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+  }
+  
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+  }
+  
+  .close-modal {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .premium-button {
+    background: var(--accent);
+    color: black;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .premium-button:hover {
+    transform: scale(1.05);
+  }  

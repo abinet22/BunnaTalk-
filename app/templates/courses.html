@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block title %}Home - BunaTalk{% endblock %}
+{% block content %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/courses.js') }}"></script>
+{% endblock %}
+
+    <div class="filter-bar">
+      <div class="filter-container">
+        <input type="text" class="search-bar" placeholder="Search courses...">
+        <button class="filter-button active">All Levels</button>
+        <button class="filter-button">Beginner</button>
+        <button class="filter-button">Intermediate</button>
+        <button class="filter-button">Advanced</button>
+      </div>
+    </div>
+    
+    <div class="course-grid">
+      <div class="course-card">
+        <div class="course-banner">
+          <div class="course-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="var(--primary)">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="course-content">
+          <div class="course-header">
+            <h3>Amharic</h3>
+            <div class="course-stats">
+              <span>🎯 Beginner</span>
+              <span>⭐ 4.8</span>
+              <span>👥 2.5k</span>
+            </div>
+          </div>
+          <p>Master the basics of Amharic, Ethiopia's official language. Perfect for beginners!</p>
+          <div class="progress-container">
+            <small>Course Progress</small>
+            <div class="level-indicator">
+              <div class="level active"></div>
+              <div class="level active"></div>
+              <div class="level"></div>
+              <div class="level"></div>
+              <div class="level"></div>
+            </div>
+          </div>
+        </div>
+        <div class="course-footer">
+          <span>40 Lessons</span>
+          <a href="https://ethiolingo.com/courses/amharic" class="start-button">Continue</a>
+        </div>
+      </div>
+    
+      <div class="course-card">
+        <div class="course-banner">
+          <div class="course-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="var(--primary)">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="course-content">
+          <div class="course-header">
+            <h3>Afaan Oromo</h3>
+            <div class="course-stats">
+              <span>🎯 Beginner</span>
+              <span>⭐ 4.7</span>
+              <span>👥 1.8k</span>
+            </div>
+          </div>
+          <p>Learn the basics of Afaan Oromo, the most widely spoken language in Ethiopia!</p>
+          <div class="progress-container">
+            <small>Course Progress</small>
+            <div class="level-indicator">
+              <div class="level active"></div>
+              <div class="level active"></div>
+              <div class="level"></div>
+              <div class="level"></div>
+              <div class="level"></div>
+            </div>
+          </div>
+        </div>
+        <div class="course-footer">
+          <span>30 Lessons</span>
+          <a href="https://ethiolingo.com/courses/afaan-oromo" class="start-button">Continue</a>
+        </div>
+      </div>
+    
+      <div class="course-card">
+        <div class="course-banner">
+          <div class="course-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="var(--primary)">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="course-content">
+          <div class="course-header">
+            <h3>Tigrinya</h3>
+            <div class="course-stats">
+              <span>🎯 Beginner</span>
+              <span>⭐ 4.6</span>
+              <span>👥 1.2k</span>
+            </div>
+          </div>
+          <p>Get started with Tigrinya, a widely spoken language in the Tigray region!</p>
+          <div class="progress-container">
+            <small>Course Progress</small>
+            <div class="level-indicator">
+              <div class="level active"></div>
+              <div class="level active"></div>
+              <div class="level"></div>
+              <div class="level"></div>
+              <div class="level"></div>
+            </div>
+          </div>
+        </div>
+        <div class="course-footer">
+          <span>35 Lessons</span>
+          <a href="https://ethiolingo.com/courses/tigrinya" class="start-button">Continue</a>
+        </div>
+      </div>
+    
+      <div class="course-card">
+        <div class="course-banner">
+          <div class="course-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="var(--primary)">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="course-content">
+          <div class="course-header">
+            <h3>Somali</h3>
+            <div class="course-stats">
+              <span>🎯 Beginner</span>
+              <span>⭐ 4.5</span>
+              <span>👥 900</span>
+            </div>
+          </div>
+          <p>Dive into Somali, a vibrant language spoken in the Somali Region!</p>
+          <div class="progress-container">
+            <small>Course Progress</small>
+            <div class="level-indicator">
+              <div class="level active"></div>
+              <div class="level active"></div>
+              <div class="level"></div>
+              <div class="level"></div>
+              <div class="level"></div>
+            </div>
+          </div>
+        </div>
+        <div class="course-footer">
+          <span>25 Lessons</span>
+          <a href="https://ethiolingo.com/courses/somali" class="start-button">Continue</a>
+        </div>
+      </div>
+    </div>
+    {% endblock %}

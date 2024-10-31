@@ -1,0 +1,275 @@
+<html><head><base href="." />
+    <title>EthioLingo - Lesson</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    :root {
+      --primary: #2D5D7C;
+      --accent: #E6B43C;
+      --background: #F5F5F5;
+      --text: #333333;
+      --success: #4CAF50;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--background);
+      color: var(--text);
+    }
+    
+    .lesson-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    
+    .lesson-header {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .learning-section {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .word-card {
+      background: var(--primary);
+      color: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      margin: 1rem 0;
+    }
+    
+    .translation {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    .pronunciation {
+      color: var(--accent);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+    
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .practice-option {
+      background: white;
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .practice-option:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: #eee;
+      border-radius: 5px;
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      width: 65%;
+      height: 100%;
+      background: var(--success);
+      border-radius: 5px;
+      transition: width 0.3s;
+    }
+    
+    .actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .btn {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: transform 0.3s;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .btn-secondary {
+      background: var(--accent);
+      color: var(--text);
+    }
+    
+    .audio-control {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .play-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+    }
+    
+    @media (max-width: 768px) {
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .actions {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+    }
+    </style>
+    </head>
+    <body>
+    
+    <nav class="nav-bar">
+      <div class="nav-container">
+        <a href="https://ethiolingo.com" class="nav-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--primary)">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          EthioLingo
+        </a>
+        <div class="nav-links">
+          <a href="https://ethiolingo.com/dashboard" class="nav-link">Dashboard</a>
+          <a href="https://ethiolingo.com/courses" class="nav-link">My Courses</a>
+          <a href="https://ethiolingo.com/community" class="nav-link">Community</a>
+          <a href="https://ethiolingo.com/resources" class="nav-link">Resources</a>
+          <div class="profile-icon">👤</div>
+        </div>
+        <div class="mobile-menu">☰</div>
+      </div>
+    </nav>
+    
+    <div class="lesson-container">
+      <div class="lesson-header">
+        <h1>Complex Sentences - Lesson 8</h1>
+        <p>Learn to form and use complex sentences in Amharic</p>
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+    
+      <div class="learning-section">
+        <h2>New Vocabulary</h2>
+        <div class="word-card">
+          <h3>እንደምን አደርክ/ሽ</h3>
+          <div class="pronunciation">endemen aderke/shi</div>
+          <div class="translation">How are you? (formal)</div>
+          <div class="audio-control">
+            <button class="play-btn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </button>
+            <span>Listen to pronunciation</span>
+          </div>
+        </div>
+      </div>
+    
+      <div class="learning-section">
+        <h2>Practice</h2>
+        <p>Choose the correct translation:</p>
+        <div class="practice-grid">
+          <div class="practice-option">How are you?</div>
+          <div class="practice-option">Good morning</div>
+          <div class="practice-option">Thank you</div>
+          <div class="practice-option">Goodbye</div>
+        </div>
+      </div>
+    
+      <div class="learning-section">
+        <h2>Sentence Structure</h2>
+        <p>Let's break down the components:</p>
+        <ul style="margin: 1rem 0 1rem 1.5rem;">
+          <li>እንደምን - how</li>
+          <li>አደርክ/ሽ - you do/are (masculine/feminine)</li>
+        </ul>
+        <div class="word-card">
+          <h3>Practice Sentence</h3>
+          <p>እንደምን አደርክ፣ ዳዊት?</p>
+          <div class="translation">How are you, Dawit?</div>
+        </div>
+      </div>
+    
+      <div class="actions">
+        <button class="btn btn-secondary">Previous Lesson</button>
+        <button class="btn btn-primary">Continue to Next Section</button>
+      </div>
+    </div>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const practiceOptions = document.querySelectorAll('.practice-option');
+      
+      practiceOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          practiceOptions.forEach(opt => opt.style.background = 'white');
+          practiceOptions.forEach(opt => opt.style.color = 'var(--text)');
+          
+          if(option.textContent === 'How are you?') {
+            option.style.background = 'var(--success)';
+            option.style.color = 'white';
+          } else {
+            option.style.background = '#ff4444';
+            option.style.color = 'white';
+          }
+        });
+      });
+    
+      const playBtn = document.querySelector('.play-btn');
+      playBtn.addEventListener('click', () => {
+        // Audio playback functionality would go here
+        alert('Audio playback coming soon!');
+      });
+    });
+    </script>
+    
+    </body></html>

@@ -1,0 +1,98 @@
+
+  {% extends './dashboard_base.html' %}
+{% block title %}Dashboard - BunaTalk{% endblock %}
+{% block content %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mycommunity.css') }}">
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/mycourses.js') }}"></script>
+{% endblock %}
+<div class="community-container">
+    <div class="communities-list">
+      <input type="search" class="search-bar" placeholder="Search communities...">
+      <div class="community-card active">
+        <h3>Amharic Learners</h3>
+        <div class="community-members">1.2k members</div>
+      </div>
+      <div class="community-card">
+        <h3>Tigrinya Study Group</h3>
+        <div class="community-members">856 members</div>
+      </div>
+      <div class="community-card">
+        <h3>Oromo Language</h3>
+        <div class="community-members">943 members</div>
+      </div>
+      <div class="community-card">
+        <h3>Ethiopian Culture</h3>
+        <div class="community-members">2.1k members</div>
+      </div>
+      <div class="community-card">
+        <h3>Beginners Help</h3>
+        <div class="community-members">1.5k members</div>
+      </div>
+    </div>
+  
+    <div class="posts-section">
+      <div class="create-post">
+        <textarea class="post-input" placeholder="Share something with the community..." rows="3"></textarea>
+        <div class="post-actions">
+          <div class="post-attachments">
+            <button class="post-button">📷 Photo</button>
+          </div>
+          <button class="post-button">Post</button>
+        </div>
+      </div>
+  
+      <div class="post">
+        <div class="post-header">
+          <div class="post-avatar">S</div>
+          <div class="post-meta">
+            <div class="post-author">Sarah Johnson</div>
+            <div class="post-time">2 hours ago</div>
+          </div>
+        </div>
+        <div class="post-content">
+          Looking for a study partner to practice Amharic conversation! Anyone interested in weekly video calls?
+        </div>
+        <div class="post-actions-bottom">
+          <div class="post-action">👍 24</div>
+          <div class="post-action">💬 12 comments</div>
+          <div class="post-action">↗️ Share</div>
+        </div>
+      </div>
+  
+      <div class="post">
+        <div class="post-header">
+          <div class="post-avatar">M</div>
+          <div class="post-meta">
+            <div class="post-author">Michael Chen</div>
+            <div class="post-time">5 hours ago</div>
+          </div>
+        </div>
+        <div class="post-content">
+          Just completed my first full conversation in Amharic! So excited about the progress. Thanks to everyone who helped me practice!
+        </div>
+        <div class="post-actions-bottom">
+          <div class="post-action">👍 56</div>
+          <div class="post-action">💬 8 comments</div>
+          <div class="post-action">↗️ Share</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+          <div id="toast-container">
+              {% for category, message in messages %}
+                  <div class="toast {{ category }}">{{ message }}</div>
+              {% endfor %}
+          </div>
+      {% endif %}
+  {% endwith %}
+  
+  
+  {% endblock %}
