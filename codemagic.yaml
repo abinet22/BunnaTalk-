@@ -2,7 +2,7 @@ workflows:
   flask-app-workflow:
     name: Flask App CI/CD
     environment:
-      python: "3.12"  # Specify the Python version you need
+      python: "3.12"  
     scripts:
       - name: Install dependencies
         script: |
