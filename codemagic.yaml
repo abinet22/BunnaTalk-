@@ -2,9 +2,10 @@ workflows:
   flask-app-workflow:
     name: Flask App CI/CD
     environment:
-      python: "3.12"  
+      # Define your custom environment variables here if needed
+      # e.g., MY_ENV_VAR: "value"
     scripts:
-      - name: Install dependencies
+      - name: Set up Python
         script: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
@@ -27,3 +28,7 @@ workflows:
             # Add deployment scripts here (e.g., using SSH)
             echo "Deploying to production server..."
 
+    build:
+      name: Build step
+      docker:
+        image: python:3.12.4  # Use a specific Python Docker image
