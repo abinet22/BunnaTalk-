@@ -1,0 +1,413 @@
+
+<html><head><base href="." />
+    <title>EthioLingo - Practice Games</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    :root {
+      --primary: #2D5D7C;
+      --accent: #E6B43C;
+      --background: #F5F5F5;
+      --text: #333333;
+      --success: #4CAF50;
+      --error: #f44336;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--background);
+      color: var(--text);
+    }
+    
+    .game-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+    
+    .game-modes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .game-mode {
+      background: white;
+      border-radius: 15px;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .game-mode:hover {
+      transform: translateY(-5px);
+    }
+    
+    .game-mode svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+    }
+    
+    .game-mode h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .flashcard-container {
+      perspective: 1000px;
+      margin-top: 2rem;
+    }
+    
+    .flashcard {
+      width: 100%;
+      height: 300px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+      cursor: pointer;
+    }
+    
+    .flashcard.flipped {
+      transform: rotateY(180deg);
+    }
+    
+    .flashcard-front, .flashcard-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+    
+    .flashcard-back {
+      transform: rotateY(180deg);
+      background: var(--primary);
+      color: white;
+    }
+    
+    .quiz-container {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .quiz-options {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .quiz-option {
+      padding: 1rem;
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .quiz-option:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .quiz-option.correct {
+      background: var(--success);
+      color: white;
+      border-color: var(--success);
+    }
+    
+    .quiz-option.incorrect {
+      background: var(--error);
+      color: white;
+      border-color: var(--error);
+    }
+    
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+    
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+    
+    .btn:hover {
+      opacity: 0.9;
+    }
+    
+    .voice-btn {
+      background: var(--accent);
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin: 1rem auto;
+    }
+    
+    .voice-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .voice-btn svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
+    }
+    
+    .voice-feedback {
+      text-align: center;
+      margin: 1rem 0;
+      font-size: 1.2rem;
+      min-height: 30px;
+    }
+    
+    .voice-container {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+    }
+    
+    .recording-animation {
+      animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); background: var(--error); }
+      100% { transform: scale(1); }
+    }
+    
+    @media (max-width: 768px) {
+      .game-container {
+        padding: 1rem;
+      }
+      
+      .flashcard {
+        height: 200px;
+      }
+      
+      .flashcard-front, .flashcard-back {
+        font-size: 1.5rem;
+      }
+    }
+    </style>
+    </head>
+    <body>
+    
+    <div class="game-container">
+      <div class="game-modes">
+        <div class="game-mode" onclick="showFlashcards()">
+          <svg viewBox="0 0 24 24" fill="var(--primary)">
+            <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/>
+          </svg>
+          <h3>Flashcards</h3>
+          <p>Practice vocabulary with interactive flashcards</p>
+        </div>
+        
+        <div class="game-mode" onclick="showQuiz()">
+          <svg viewBox="0 0 24 24" fill="var(--primary)">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+          </svg>
+          <h3>Quiz</h3>
+          <p>Test your knowledge with multiple choice questions</p>
+        </div>
+    
+        <div class="game-mode" onclick="showVoicePractice()">
+          <svg viewBox="0 0 24 24" fill="var(--primary)">
+            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+          </svg>
+          <h3>Voice Practice</h3>
+          <p>Practice pronunciation with voice recognition</p>
+        </div>
+      </div>
+    
+      <div class="flashcard-container" id="flashcardGame" style="display: none;">
+        <div class="flashcard" onclick="flipCard(this)">
+          <div class="flashcard-front">
+            ሰላም
+          </div>
+          <div class="flashcard-back">
+            Hello
+          </div>
+        </div>
+        <div class="controls">
+          <button class="btn" onclick="previousCard()">Previous</button>
+          <button class="btn" onclick="nextCard()">Next</button>
+        </div>
+      </div>
+    
+      <div class="quiz-container" id="quizGame" style="display: none;">
+        <h2>What does "ሰላም" mean?</h2>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="checkAnswer(this, true)">Hello</div>
+          <div class="quiz-option" onclick="checkAnswer(this, false)">Goodbye</div>
+          <div class="quiz-option" onclick="checkAnswer(this, false)">Thank you</div>
+          <div class="quiz-option" onclick="checkAnswer(this, false)">Please</div>
+        </div>
+        <div class="controls">
+          <button class="btn" onclick="nextQuestion()">Next Question</button>
+        </div>
+      </div>
+    
+      <div class="voice-container" id="voicePractice" style="display: none;">
+        <h2>Pronunciation Practice</h2>
+        <p>Listen to the word and try to pronounce it correctly</p>
+        
+        <div class="voice-feedback" id="voiceFeedback"></div>
+        
+        <button class="voice-btn" id="listenBtn" onclick="playWord()">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+          </svg>
+        </button>
+        
+        <button class="voice-btn" id="recordBtn" onclick="startRecording()">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <script>
+    function showFlashcards() {
+      document.getElementById('flashcardGame').style.display = 'block';
+      document.getElementById('quizGame').style.display = 'none';
+      document.getElementById('voicePractice').style.display = 'none';
+    }
+    
+    function showQuiz() {
+      document.getElementById('flashcardGame').style.display = 'none';
+      document.getElementById('quizGame').style.display = 'block';
+      document.getElementById('voicePractice').style.display = 'none';
+    }
+    
+    function showVoicePractice() {
+      document.getElementById('flashcardGame').style.display = 'none';
+      document.getElementById('quizGame').style.display = 'none';
+      document.getElementById('voicePractice').style.display = 'block';
+    }
+    
+    function flipCard(card) {
+      card.classList.toggle('flipped');
+    }
+    
+    function previousCard() {
+      // Implement previous card logic
+    }
+    
+    function nextCard() {
+      // Implement next card logic
+    }
+    
+    function checkAnswer(option, isCorrect) {
+      const options = document.querySelectorAll('.quiz-option');
+      options.forEach(opt => {
+        opt.classList.remove('correct', 'incorrect');
+      });
+      
+      if (isCorrect) {
+        option.classList.add('correct');
+      } else {
+        option.classList.add('incorrect');
+      }
+    }
+    
+    function nextQuestion() {
+      // Implement next question logic
+    }
+    
+    let currentWord = {
+      amharic: 'ሰላም',
+      english: 'Hello',
+      audioUrl: 'path/to/audio/selam.mp3'
+    };
+    
+    function playWord() {
+      const audio = new Audio(currentWord.audioUrl);
+      audio.play();
+    }
+    
+    let recognition;
+    let isRecording = false;
+    
+    function startRecording() {
+      if (!isRecording) {
+        if (!recognition) {
+          recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+          recognition.continuous = false;
+          recognition.lang = 'am-ET'; // Amharic language
+          
+          recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            checkPronunciation(transcript);
+          };
+          
+          recognition.onerror = (event) => {
+            document.getElementById('voiceFeedback').textContent = 'Error: ' + event.error;
+          };
+        }
+        
+        document.getElementById('recordBtn').classList.add('recording-animation');
+        document.getElementById('voiceFeedback').textContent = 'Listening...';
+        recognition.start();
+        isRecording = true;
+      } else {
+        stopRecording();
+      }
+    }
+    
+    function stopRecording() {
+      if (recognition) {
+        recognition.stop();
+      }
+      document.getElementById('recordBtn').classList.remove('recording-animation');
+      isRecording = false;
+    }
+    
+    function checkPronunciation(transcript) {
+      const feedback = document.getElementById('voiceFeedback');
+      if (transcript.toLowerCase() === currentWord.amharic.toLowerCase()) {
+        feedback.textContent = 'Correct pronunciation! Well done!';
+        feedback.style.color = 'var(--success)';
+      } else {
+        feedback.textContent = 'Try again! Listen to the correct pronunciation.';
+        feedback.style.color = 'var(--error)';
+      }
+      stopRecording();
+    }
+    </script>
+    
+    </body></html>

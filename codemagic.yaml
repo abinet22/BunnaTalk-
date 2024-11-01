@@ -1,0 +1,29 @@
+workflows:
+  flask-app-workflow:
+    name: Flask App CI/CD
+    environment:
+      python: "3.12.4"  # Specify the Python version you need
+    scripts:
+      - name: Install dependencies
+        script: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests
+        script: |
+          pytest  # Replace with your testing command
+      - name: Build and deploy
+        script: |
+          # Add commands to build and deploy your app
+          echo "Deploying the Flask app..."
+
+    artifacts:
+      - build/**  # Specify artifacts to be collected
+      - logs/**  # Specify log files to be collected
+
+    publishing:
+      scripts:
+        - name: Publish to server
+          script: |
+            # Add deployment scripts here (e.g., using SSH)
+            echo "Deploying to production server..."
+
