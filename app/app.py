@@ -1,8 +1,10 @@
 # app/app.py
 
 from flask import Flask
+
 from config import Config
-from models import db
+
+from models import db, User 
 from routes import main, user  # Import both the main and user Blueprints
 
 
@@ -11,6 +13,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 db.init_app(app)  # Initialize db with the app
+
 
 # Register the Blueprint
 app.register_blueprint(main)

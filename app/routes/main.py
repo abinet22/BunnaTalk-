@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash,jsonify,session
+from flask_login import login_required, current_user, login_user, logout_user
 from ..models import db, User
 
 # Define the blueprint
@@ -22,25 +23,23 @@ def community():
 @main.route('/courses')
 def courses():
     return render_template('courses.html')  # Create a corresponding courses.html template
+
 @main.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
 
-        # Implement user authentication logic
-        user = User.query.filter_by(email=email).first()  # Query the user by email
-        
-        # Assuming you have a method to verify the password, e.g., using Werkzeug's check_password_hash
-        if user and user.verify_password(password):  
+        user = User.query.filter_by(email=email).first()
+        if user and user.verify_password(password):
             flash('Login successful!', 'success')
-            session['user_id'] = user.id  # Store user ID in session
-          
-            return redirect(url_for('main.dashboard'))  # Redirect to the dashboard
+            login_user(user)
+            return redirect(url_for('main.dashboard'))
         else:
             flash('Invalid credentials. Please try again.', 'error')
 
     return render_template('login.html')
+
 @main.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -65,15 +64,13 @@ def register():
 
     return render_template('register.html')
 @main.route('/dashboard')
+@login_required  # Automatically checks if user is authenticated
 def dashboard():
-    if 'user_id' not in session:
-        flash('You need to log in first.', 'error')
-        return redirect(url_for('main.login'))
-    return render_template('dashboard.html')
+    print("Current User:", current_user)
+    return render_template('dashboard.html', user=current_user)
 @main.route('/logout')
+@login_required
 def logout():
-    # Clear the user session
-    session.pop('user_id', None)  # Remove user_id from session
-    session.modified = True
-    flash('You have been logged out successfully.', 'success')  # Optional flash message
-    return redirect(url_for('main.home')) 
+    logout_user()  # This clears the user session
+    flash('You have been logged out successfully.', 'success')
+    return redirect(url_for('main.home'))

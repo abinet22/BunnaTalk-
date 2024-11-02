@@ -1,0 +1,103 @@
+
+{% extends './dashboard_base.html' %}
+{% block title %}Dashboard - BunaTalk{% endblock %}
+{% block content %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/currentlearn.css') }}">
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/currentlearn.js') }}"></script>
+{% endblock %}
+    <div class="learning-container">
+      <div class="course-header">
+        <div>
+          <h1>Amharic - Intermediate</h1>
+          <p>Master complex sentences and advanced vocabulary</p>
+        </div>
+        <svg class="progress-ring" width="120" height="120">
+          <circle cx="60" cy="60" r="54" stroke="#eee" stroke-width="8" fill="none"/>
+          <circle cx="60" cy="60" r="54" stroke="var(--success)" stroke-width="8" fill="none" stroke-dasharray="339.292" stroke-dashoffset="118.752"/>
+        </svg>
+      </div>
+    
+      <div class="learning-grid">
+        <div class="learning-card">
+          <div class="learning-card-header">
+            <div class="icon-circle">📚</div>
+            <h3>Current Lesson</h3>
+          </div>
+          <p>Lesson 8: Complex Sentences</p>
+          <button onclick="window.location.href='/user/lessons';" style="background: var(--primary); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; margin-top: 1rem; cursor: pointer;">Continue Learning</button>
+        </div>
+    
+        <div class="learning-card">
+          <div class="learning-card-header">
+            <div class="icon-circle">🏆</div>
+            <h3>Achievements</h3>
+          </div>
+          <p>5 badges earned this week</p>
+          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+            <span style="font-size: 2rem;">🥇</span>
+            <span style="font-size: 2rem;">🎯</span>
+            <span style="font-size: 2rem;">⭐</span>
+          </div>
+        </div>
+    
+        <div class="learning-card">
+          <div class="learning-card-header">
+            <div class="icon-circle">🎮</div>
+            <h3>Practice Games</h3>
+          </div>
+          <p>Reinforce your learning with fun activities</p>
+          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+            <button style="flex: 1; background: var(--accent); border: none; padding: 0.8rem; border-radius: 8px; cursor: pointer;">Flashcards</button>
+            <button style="flex: 1; background: var(--accent); border: none; padding: 0.8rem; border-radius: 8px; cursor: pointer;">Quiz</button>
+          </div>
+        </div>
+      </div>
+    
+      <h2>Lesson Progress</h2>
+      <ul class="lesson-list">
+        <li class="lesson-item completed">
+          <div class="status-circle">✓</div>
+          <div>
+            <h4>Lesson 7: Past Perfect Tense</h4>
+            <p>Completed on June 15</p>
+          </div>
+        </li>
+        <li class="lesson-item">
+          <div class="status-circle"></div>
+          <div>
+            <h4>Lesson 8: Complex Sentences</h4>
+            <p>In Progress - 65% Complete</p>
+          </div>
+        </li>
+        <li class="lesson-item">
+          <div class="status-circle"></div>
+          <div>
+            <h4>Lesson 9: Advanced Vocabulary</h4>
+            <p>Locked - Complete previous lesson to unlock</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="chat-widget">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div id="toast-container">
+            {% for category, message in messages %}
+                <div class="toast {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+
+{% endblock %}
+  

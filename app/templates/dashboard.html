@@ -1,7 +1,8 @@
 {% extends 'dashboard_base.html' %}
 {% block title %}Dashboard - BunaTalk{% endblock %}
 {% block content %}
-  
+
+
     <div class="welcome-section">
       <div>
         <h1>Welcome back, Sarah! 👋</h1>
@@ -80,7 +81,70 @@
         </div>
       </div>
     </div>
-  
+    <div class="modal-overlay" id="languageModal">
+      <div class="modal-container">
+        <!-- Welcome Slide -->
+        <div class="modal-slide active" data-slide="1">
+          <h2 style="text-align: center; margin-bottom: 1.5rem">Welcome to EthioLingo! 👋</h2>
+          <p style="text-align: center; margin-bottom: 2rem">Let's personalize your learning journey. First, tell us which languages you speak.</p>
+          <div class="modal-buttons">
+            <div></div>
+            <button class="modal-button next" onclick="nextSlide()">Get Started</button>
+          </div>
+        </div>
+    
+        <!-- Native Language Slide -->
+        <div class="modal-slide" data-slide="2">
+          <h2 style="margin-bottom: 1.5rem">What languages do you speak?</h2>
+          <p style="margin-bottom: 1rem">Select all that apply:</p>
+          <div class="language-options" id="nativeLanguages">
+            <div class="language-option" onclick="toggleSelection(this)">
+              <span>🇺🇸</span> English
+            </div>
+            <div class="language-option" onclick="toggleSelection(this)">
+              <span>🇪🇹</span> Amharic
+            </div>
+            <div class="language-option" onclick="toggleSelection(this)">
+              <span>🗣️</span> Afaan Oromo
+            </div>
+            <div class="language-option" onclick="toggleSelection(this)">
+              <span>📚</span> Tigrinya
+            </div>
+          </div>
+          <div class="modal-buttons">
+            <button class="modal-button back" onclick="previousSlide()">Back</button>
+            <button class="modal-button next" onclick="nextSlide()">Next</button>
+          </div>
+        </div>
+    
+        <!-- Target Language Slide -->
+        <div class="modal-slide" data-slide="3">
+          <h2 style="margin-bottom: 1.5rem">What would you like to learn?</h2>
+          <p style="margin-bottom: 1rem">Select all that interest you:</p>
+          <div class="language-options" id="targetLanguages">
+            <div class="language-option" onclick="toggleSelection(this)">
+              <span>🇪🇹</span> Amharic
+            </div>
+            <div class="language-option" onclick="toggleSelection(this)">
+              <span>🗣️</span> Afaan Oromo
+            </div>
+            <div class="language-option" onclick="toggleSelection(this)">
+              <span>📚</span> Tigrinya
+            </div>
+          </div>
+          <div class="modal-buttons">
+            <button class="modal-button back" onclick="previousSlide()">Back</button>
+            <button class="modal-button next" onclick="submitLanguages()">Start Learning</button>
+          </div>
+        </div>
+    
+        <div class="modal-progress">
+          <div class="progress-dot active"></div>
+          <div class="progress-dot"></div>
+          <div class="progress-dot"></div>
+        </div>
+      </div>
+    </div>
 
       {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
@@ -91,6 +155,21 @@
           </div>
       {% endif %}
   {% endwith %}
-  
+  {% block js %}
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+<script>
+  const learningLanguage = {{ user.learning_language | tojson | default('null') | safe }};
+  console.log(learningLanguage)
+  if (learningLanguage === null || learningLanguage === '') {
+
+    document.getElementById('languageModal').style.display = 'flex';
+  } else {
+    document.getElementById('languageModal').style.display = 'none';
+  }
+</script>
+{% endblock %}
   
   {% endblock %}
+ 

@@ -285,3 +285,110 @@ body {
   font-size: 0.9rem;
 }
 
+/* modal */
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+}
+
+.modal-container {
+  background: white;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 600px;
+  padding: 2rem;
+  position: relative;
+}
+
+.modal-slide {
+  display: none;
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal-slide.active {
+  display: block;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.language-option:hover {
+  background: #f5f5f5;
+}
+
+.language-option.selected {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.modal-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.modal-button.next {
+  background: var(--primary);
+  color: white;
+}
+
+.modal-button.back {
+  background: #eee;
+  color: var(--text);
+}
+
+.modal-progress {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ddd;
+}
+
+.progress-dot.active {
+  background: var(--primary);
+}
